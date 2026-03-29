@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --text: #e5e7eb;
+      --text-muted: #94a3b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+    body {
+      background: radial-gradient(circle at top, #1a1a2e, #050509);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    header p {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    header a {
+      display:inline-block;
+      margin-top:1.5rem;
+      padding:0.75rem 1.5rem;
+      background: var(--accent);
+      color:#fff;
+      border-radius: 8px;
+      font-weight:600;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    header a:hover {
+      background: var(--accent-2);
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      animation: bounce 2s infinite;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 5px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      background: rgba(139,92,246,0.15);
+      color: var(--accent);
+      padding: 0.5rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      text-align: center;
+      border: 1px solid rgba(139,92,246,0.3);
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: var(--accent-2);
+      color: #020617;
+      cursor: default;
+    }
+
+    .projects {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: #111;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      transition: color 0.3s;
+    }
+
+    .card h3:hover {
+      color: var(--accent-2);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.7rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(139,92,246,0.3);
+      transition: 0.3s;
+    }
+
+    .tag:hover {
+      background: var(--accent-2);
+      color: #020617;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #ffffff;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    a { text-decoration: none; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Conor Logan</h1>
+  <p>Building AI systems & web apps that solve real problems • 8 years of creative & technical experience</p>
+  <a href="#projects">See Projects</a>
+  <div class="scroll-down">↓ Scroll</div>
+</header>
+
+<section class="hidden" id="about">
+  <h2>About</h2>
+  <p>I design and develop AI tools, creative software, and interactive web apps. My work includes real-time audio classification, scalable full-stack platforms, and user-centered design. Passionate about turning ideas into production-ready solutions.</p>
+</section>
+
+<section class="hidden" id="skills">
+  <h2>Skills & Tech Stack</h2>
+  <div class="skills-grid">
+    <div class="skill">Python</div>
+    <div class="skill">TensorFlow</div>
+    <div class="skill">PyTorch</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">React</div>
+    <div class="skill">HTML & CSS</div>
+    <div class="skill">PHP & MySQL</div>
+    <div class="skill">AI & Machine Learning</div>
+    <div class="skill">Audio Processing</div>
+    <div class="skill">UI/UX Design</div>
+    <div class="skill">Git & GitHub</div>
+    <div class="skill">Problem Solving</div>
+  </div>
+</section>
+
+<section class="hidden" id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <div class="card">
+      <div class="project-image" style="background-image: url('https://via.placeholder.com/800x400')"></div>
+      <div class="card-content">
+        <h3>🎵 AI Music Classifier</h3>
+        <p>Deep learning system that classifies music genres in real time with 92% accuracy. Users can upload tracks and get instant predictions.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Audio ML</span>
+          <a href="https://github.com/yourname/music-classifier" class="tag" style="background:#22d3ee; color:#020617;">GitHub</a>
+          <a href="#" class="tag" style="background:#8b5cf6; color:#fff;">Live Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="project-image" style="background-image: url('https://via.placeholder.com/800x400')"></div>
+      <div class="card-content">
+        <h3>🌐 Web Platform</h3>
+        <p>Full-stack web app with authentication, database integration, and responsive UI. Designed for scalability and performance, handling 1000+ concurrent users.</p>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <a href="https://github.com/yourname/web-platform" class="tag" style="background:#22d3ee; color:#020617;">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="project-image" style="background-image: url('https://via.placeholder.com/800x400')"></div>
+      <div class="card-content">
+        <h3>🚀 Future Project</h3>
+        <p>Upcoming project exploring new technologies and creative development ideas. Stay tuned for updates!</p>
+        <div class="tags">
+          <span class="tag">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="hidden" id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:your@email.com" style="color: var(--accent-2);">your@email.com</a></p>
+  <p>GitHub: <a href="https://github.com/yourname" style="color: var(--accent-2);" target="_blank">github.com/yourname</a></p>
+  <p>LinkedIn: <a href="https://linkedin.com/in/yourname" style="color: var(--accent-2);" target="_blank">linkedin.com/in/yourname</a></p>
+</section>
+
+<footer>
+  <p>© 2026 Conor Logan</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
